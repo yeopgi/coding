@@ -10,14 +10,15 @@ int main(void) {
     getline(cin, str);
 
     int wordCnt = 0;
-    char prev;
     for (int i = 0; i < str.size(); i++) {
-        prev = str[i];
-        if (str[i] == ' ') {
-            if (i == 0 || i == str.size() - 1) {
+        if (i == 0) {
+            if(str[i] = ' ') {
                 continue;
             }
-            wordCnt++;
+        } else {
+            if (str[i] = ' ') {
+                wordCnt++;
+            }
         }
     }
 

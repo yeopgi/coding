@@ -6,8 +6,9 @@ using namespace std;
 
 int main(void)
 {   
-    int a = 5;
-    cin >> a;
-    cout << a << endl;
+    string str = "baa";
+
+    cout << str.erase(1,2) << endl;
+    str.erase();
     return 0;
 }
