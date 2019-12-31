@@ -8,17 +8,18 @@ int main(void) {
 
     string str;
     getline(cin, str);
-
+    if (str == " " || str == "") {
+        cout << 0 << endl;
+        return 0;
+    }
+    
     int wordCnt = 0;
     for (int i = 0; i < str.size(); i++) {
-        if (i == 0) {
-            if(str[i] = ' ') {
+        if (str[i] == ' ') {
+            if (i == 0 || i == str.size() - 1) {
                 continue;
             }
-        } else {
-            if (str[i] = ' ') {
-                wordCnt++;
-            }
+            wordCnt++;
         }
     }
 
