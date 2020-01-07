@@ -1,24 +1,47 @@
-#include<stdio.h>
-#include<string.h>
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int solution(string s) {
+    int sequenceCnt = 0;
+    int sumList[s.size()/2 + 1] = {0};
+    for(int i = 1 ; i < s.size() / 2; i++) {
+        string prev = s.substr(0,i);
+        cout << "prev prev : " << prev << endl;
+        int length = 0;
+        for(int j = i; j <= s.size(); j += i) {
+            cout << "substr : " << s.substr(j, i) << endl;
+			if (s.substr(j, i) == prev) {
+                sequenceCnt++;
+            } else {
+                if(sequenceCnt > 1) {
+                    length += 2;
+                } else {
+                    length += 1;
+                }
+                
+                sequenceCnt = 0;
+            }    
+            prev = s.substr(j,i);
+        	cout << "post prev : " << prev << endl;
+        }
+        sumList[i] = length;
+    }
+    
+    sort(sumList, sumList + s.size());
+    return sumList[1];
+}
+
 int main(void)
 {
-	int test_case = 0;				//testcase 갯수
-	int recur = 0;					//반복횟수
-	//int st_leng = 0;				//문자열의 갯수
-	char string1[20] = {0};		//문자열 s의 길이
-	
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-	scanf("%d", &test_case);
-	
-	int st_leng = strlen(string1);
-	for (int a = 0; a < test_case; a++)
-	{
-		scanf("%d %s", &recur, &string1);
-		for (int i = 0; string1[i]!=NULL; i++)	//입력받은 문자열을 제어
-		{
-			for (int j = 0; j < recur; j++) printf("%c", string1[i]);
-		}
-		printf("\n");
-	}
-	return 0;
+    string str;
+    cin >> str;
+    cout << solution(str) << '\n';
+
+    return 0;
 }
