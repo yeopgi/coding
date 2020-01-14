@@ -26,7 +26,7 @@ int main(void)
         if (input == 1) {
             cout << 1 << '\n';
             continue;
-        }
+        }        
 
         int cnt = 0;
         for (int i = input +1 ; i <= 2 * input; i++) {
