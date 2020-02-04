@@ -1,104 +1,74 @@
+#include <algorithm>
 #include <iostream>
-
 #include <queue>
-
-#include <cstring>
-
+#include <stack>
+#include <vector>
 using namespace std;
 
-const int MAX = 1000 + 1;
+void Dfs(int start);
+void Bfs(int start);
 
-int N, M, V;
-
-int adjacent[MAX][MAX];
-
-bool visited[MAX];
-
+bool visit[10000 + 1];
+vector<vector<int>> v;
 queue<int> q;
+int vertex, edge, startVertex;
 
-void DFS(int idx)
+int main(void) {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-{
-
-    cout << idx << " ";
-
-    for (int i = 1; i <= N; i++)
-
-        if (adjacent[idx][i] && !visited[i])
-
-        {
-
-            visited[i] = 1;
-
-            //인접한 노드에 대해서 또 다시 DFS
-
-            DFS(i);
-        }
-}
-
-void BFS(int idx)
-
-{
-
-    q.push(idx);
-
-    visited[idx] = 1;
-
-    while (!q.empty())
-
-    {
-
-        idx = q.front();
-
-        q.pop();
-
-        cout << idx << " ";
-
-        //BFS는 해당 노드에 인접한 노드들을 모두 추가한 뒤 BFS 진행
-
-        for (int i = 1; i <= N; i++)
-
-            if (adjacent[idx][i] && !visited[i])
-
-            {
-
-                visited[i] = 1;
-
-                q.push(i);
-            }
+    cin >> vertex >> edge >> startVertex;
+    v.resize(vertex + 1);
+    for(int i = 0; i < vertex + 1; i++) {
+        v[i].resize(vertex + 1);
     }
-}
 
-int main(void)
-
-{
-
-    cin >> N >> M >> V;
-
-    for (int i = 0; i < M; i++)
-
-    {
-
+    while (edge--) {
         int from, to;
-
         cin >> from >> to;
-
-        adjacent[from][to] = 1;
-
-        adjacent[to][from] = 1;
+        v[from][to] = to;
+        v[to][from] = from;
     }
 
-    visited[V] = 1; //V에서 시작하므로
+    Dfs(startVertex);
 
-    DFS(V);
+    cout << '\n';
+    fill_n(visit, 10001, false);
 
-    cout << endl;
-
-    memset(visited, false, sizeof(visited));
-
-    BFS(V);
-
-    cout << endl;
+    Bfs(startVertex);
 
     return 0;
+}
+
+void Dfs(int start) 
+{
+    visit[start] = true;
+    cout << start << ' ';
+    for (int i = 1; i < v[start].size(); i++) {
+        if (v[start][i] != 0) {
+            if (!visit[v[start][i]]) {
+                Dfs(v[start][i]);
+            }
+        }
+    }
+}
+
+void Bfs(int start) 
+{
+    q.push(start);
+    visit[start] = true;
+    while (!q.empty()) {
+        int x = q.front();
+        q.pop();
+        cout << x << ' ';
+        for (int i = 1; i < v[x].size(); i++) {
+            int temp = v[x][i];
+            if (temp != 0) {
+                if (!visit[temp]) {
+                    q.push(temp);
+                    visit[temp] = true;
+                }
+            }
+        }
+    }
 }
