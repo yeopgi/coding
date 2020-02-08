@@ -10,7 +10,6 @@ bool visit[50][50];
 
 void Dfs(int xStart, int yStart) {
     visit[xStart][yStart] = true;
-    //cout << "xStart : " << xStart << ' ' << "yStart : " << yStart << endl;
     for (int i = 0; i < 4; i++) {
         int xTemp = xStart + dx[i];
         int yTemp = yStart + dy[i];
