@@ -11,6 +11,7 @@ int check[101][101]={0,};
 int dx[] = {-1,0,1,0};//시계방향
 int dy[] = {0,1,0,-1};
 int n,m;
+
 int main(){
     scanf("%d %d", &n,&m);
     
