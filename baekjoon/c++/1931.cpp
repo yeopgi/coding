@@ -3,34 +3,35 @@
 #include <algorithm>
 using namespace std;
 
-typedef struct information
-{
-    int start, end;
-}information;
+int N; //<=100000
+int cBegin[100000], cEnd[100000]; //conference 시작시간, 끝나는 시간
 
-void compare(information inform1, information inform2)
-{  
-    /*
-    if (inform1.end == inform2.end) {
-        return inform1.start < inform2.start;
-    } else {
-        return inform1.end < inform2.end;
-    }*/
+int schedule(void)
+{
+    vector<pair<int, int>> order;
+    for (int i = 0; i < N; i++)
+        order.push_back(make_pair(cEnd[i], cBegin[i]));
+
+    sort(order.begin(), order.end());
+    //earliest: 다음 회의가 시작할 수 있는 가장 빠른 시간
+    //selected: 지금까지 선택한 회의의 수
+    int earliest = 0, selected = 0;
+    for (int i = 0; i < order.size(); i++) {
+        int meetingBegin = order[i].second, meetingEnd = order[i].first;
+        if (earliest <= meetingBegin) {
+            //earliest를 마지막 회의가 끝난 시간 이후로 갱신
+            earliest = meetingEnd;
+            selected++;
+        }
+    }
+    return selected;
 }
 
-int main(void)
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
+int main(void) {
+    cin >> N;
+    for (int i = 0; i < N; i++)
+        cin >> cBegin[i] >> cEnd[i];
 
-    int meeting;
-    cin >> meeting;
-    vector<information> v(meeting);
-    for (int i = 1;i <= v.size(); i++) {
-        cin >> v[i].start >> v[i].end;
-    }
-
-    sort(v.begin(), v.size(), compare);
-
+    cout << schedule() << endl;
     return 0;
 }
