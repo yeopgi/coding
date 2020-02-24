@@ -15,21 +15,21 @@ int solution(int n, vector<vector<int>> results)
         int y = results[i][1];
         check[x][y] = 1;
     }
-                                                                    //플로이드와샬 알고리즘에 의하면 가장 먼저 바뀌는건 도착 노드
-    for (int k = 1; k <= n; k++) {                                  // 거쳐가는 노드   
-        for (int i = 1; i <= n; i++) {                              // 출발 노드
-            for (int j = 1; j <= n; j++) {                          // 도착 노드
+                                                                                //플로이드와샬 알고리즘에 의하면 가장 먼저 바뀌는건 도착 노드
+    for (int k = 1; k <= n; k++) {                                              // 거쳐가는 노드   
+        for (int i = 1; i <= n; i++) {                                          // 출발 노드
+            for (int j = 1; j <= n; j++) {                                      // 도착 노드
                 if (check[i][k] + check[k][j] < check[i][j]) {
                     check[i][j] = check[i][k] + check[k][j];
                 }
             }
         }
     }
-
+    
     for (int i = 1; i <= n; i++) {
         bool isFight = true;
         for (int j = 1; j <= n; j++) {
-            if (i == j) {
+            if (i == j) {                                                        // 모두 무한대로 채워놓았기 때문에
                 continue;
             }
                                                                                 // 마지막까지 INFITINTE 인건 INFINITE > 비교대상일때, 비교대상이 INFINITE + K 이기 때문이다. ( 1<= K <= INFINITE)
