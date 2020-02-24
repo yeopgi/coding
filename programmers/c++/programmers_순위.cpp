@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <string>
 #include <vector>
+#include <iostream>
 #define INFINITE 10000000
 using namespace std;
 
@@ -15,7 +16,7 @@ int solution(int n, vector<vector<int>> results)
         int y = results[i][1];
         check[x][y] = 1;
     }
-                                                                                //플로이드와샬 알고리즘에 의하면 가장 먼저 바뀌는건 도착 노드
+                                                                                // 플로이드와샬 알고리즘에 의하면 가장 먼저 바뀌는건 도착 노드
     for (int k = 1; k <= n; k++) {                                              // 거쳐가는 노드   
         for (int i = 1; i <= n; i++) {                                          // 출발 노드
             for (int j = 1; j <= n; j++) {                                      // 도착 노드
@@ -26,6 +27,16 @@ int solution(int n, vector<vector<int>> results)
         }
     }
     
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            cout << check[i][j] << '\t';
+        }
+
+        cout << '\n';        
+    }
+
+
+
     for (int i = 1; i <= n; i++) {
         bool isFight = true;
         for (int j = 1; j <= n; j++) {
@@ -44,4 +55,16 @@ int solution(int n, vector<vector<int>> results)
     }
 
     return answer;
+}
+
+int main(void)
+{
+    vector<vector<int>> results;
+    int a1[2] = {4,3};
+    int a2[2] = {4,2};
+    int a3[2] = {3,2};
+    int a4[2] = {1,2};
+    int a5[2] = {2,5};
+    results[0].push_back(a1);
+
 }
