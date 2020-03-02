@@ -43,8 +43,8 @@ void BFS(int x, int y){
                     q.push(make_pair(nx,ny));
                     check[nx][ny] = check[x][y] + 1;
                 }
-                else if(check[nx][ny]==0)
-                    check[nx][ny] = -1;
+                //else if(check[nx][ny]==0)
+                  //  check[nx][ny] = -1;
             }
         }
     }
