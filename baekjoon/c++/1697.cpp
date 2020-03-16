@@ -8,6 +8,10 @@ queue<pair<int, int>> q;
 
 int Finding(int location, int time)
 {
+    if (location < 0 || location > 100000) {
+        return -1;
+    }
+    
     if (!visit[location]) {
         visit[location] = true;
         if (location == brother) {
@@ -24,12 +28,13 @@ int Finding(int location, int time)
 void Measure(int start, int time) 
 {
     q.push(make_pair(start, time));
+    visit[start] = true;
 
     while (!q.empty()) {
         int location = q.front().first;
         int spendTime = q.front().second;
         q.pop();
-        visit[location] = true;
+
         if(Finding(location + 1, spendTime + 1) == 0) {
             return;
         }
@@ -50,8 +55,12 @@ int main(void)
     cin.tie(nullptr);
 
     cin >> me >> brother;
-    Finding(me, 0);
+    if (me == brother) {
+        cout << 0;
+        return 0;
+    }
     
+    Measure(me, 0);
 
     return 0;
 }
