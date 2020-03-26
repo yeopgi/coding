@@ -26,7 +26,7 @@ int main() {
                 ++count;
                 if (index == m) {
                     cout << count << endl;
-                    break;
+                    break;```
                 }
             } else
                 q.push({index, value});
