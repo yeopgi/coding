@@ -8,15 +8,15 @@ void CreateNum(void)
 {
     number.clear();
 
-    for (int i = 1; (i * (i+1)) / 2 <= 1000; i++) {
+    for (size_t i = 1; (i * (i+1)) / 2 <= 1000; i++) {
         number.push_back((i * (i+1)) / 2);
     }
 }
 
 int IsExpress(const int &testNum) {
-    for (int i = 0; i < number.size(); i++) {
-        for (int j = 0; j < number.size(); j++) {
-            for (int k = 0; k < number.size(); k++) {
+    for (size_t i = 0; i < number.size(); i++) {
+        for (size_t j = 0; j < number.size(); j++) {
+            for (size_t k = 0; k < number.size(); k++) {
                 if (number[i] + number[j] + number[k] == testNum) {
                     return 1;
                 } 
@@ -34,7 +34,7 @@ int main(void)
 
     CreateNum();
 
-    int test;
+    size_t test;
     cin >> test;
     while (test--) {
         int testNum;
