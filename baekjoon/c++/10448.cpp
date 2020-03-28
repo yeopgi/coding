@@ -1,43 +1,45 @@
 #include <iostream>
+#include <vector>
 using namespace std;
+
+vector<int> number;
+
+void CreateNum(void)
+{
+    number.clear();
+
+    for (int i = 1; (i * (i+1)) / 2 <= 1000; i++) {
+        number.push_back((i * (i+1)) / 2);
+    }
+}
+
+int IsExpress(const int &testNum) {
+    for (int i = 0; i < number.size(); i++) {
+        for (int j = 0; j < number.size(); j++) {
+            for (int k = 0; k < number.size(); k++) {
+                if (number[i] + number[j] + number[k] == testNum) {
+                    return 1;
+                } 
+            }
+        }
+    }
+
+    return 0;
+}
 
 int main(void)
 {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 
+    CreateNum();
+
     int test;
     cin >> test;
     while (test--) {
-        int k, cnt = 0;
-        cin >> k;
-        int init = k;
-        for (int i = 1;; i++) {
-            if (k <= (i * (i + 1)) / 2) {
-                if (k == (i * (i + 1)) / 2) {
-                    if (k - ((i * (i + 1)) / 2) == 0 && cnt + 1 == 3) {
-                        cout << 1 << '\n';
-                    }
-                }
-
-                int temp = i - 1;
-                k -= (temp * (temp + 1)) / 2;
-                cnt++;
-                i = 1;
-                if (k == 0) {
-                    if (cnt == 3) {
-                        cout << 1 << '\n';
-                        break;
-                    } else {
-                        cout << 0 << '\n';
-                        break;
-                    }
-                } else if (k < 0) {
-                    cout << 0 << '\n';
-                    break;
-                }
-            }
-        }
+        int testNum;
+        cin >> testNum;
+        cout << IsExpress(testNum) << '\n';       
     }
 
     return 0;
