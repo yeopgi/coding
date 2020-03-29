@@ -1,28 +1,25 @@
-#include <iostream>
-#include <cstring>
+#include <stdio.h>
+#include <algorithm>
 using namespace std;
 
-typedef struct informationTP
-{
-    int t, p;
-}informationTP;
+const int kMaxCnt = 17;
+int n, t[kMaxCnt], p[kMaxCnt], d[kMaxCnt], result;
 
-informationTP tp[16];
-int d[16][121];
-
-int main(void)
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    int limitDay;
-    cin >> limitDay;
-    for (int i = 1; i <= limitDay; i++) {
-        cin >> tp[i].t >> tp[i].t;
+int main() {
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++) {
+        scanf("%d %d", &t[i], &p[i]);
     }
 
-    for (int startDay = 2; startDay <= limitDay; startDay++) {
-        
+    for (int i = 1; i <= n; i++) {
+        if (i + t[i] <= n + 1) {
+            d[i + t[i]] = max(d[i + t[i]], d[i] + p[i]);
+            result = max(result, d[i + t[i]]);
+        }
+
+        d[i + 1] = max(d[i + 1], d[i]);
+        result = max(result, d[i + 1]);
     }
 
-    return 0;
+    printf("%d\n", result);
 }
