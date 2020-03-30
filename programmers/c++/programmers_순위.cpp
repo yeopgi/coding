@@ -56,15 +56,3 @@ int solution(int n, vector<vector<int>> results)
 
     return answer;
 }
-
-int main(void)
-{
-    vector<vector<int>> results;
-    int a1[2] = {4,3};
-    int a2[2] = {4,2};
-    int a3[2] = {3,2};
-    int a4[2] = {1,2};
-    int a5[2] = {2,5};
-    results[0].push_back(a1);
-
-}
