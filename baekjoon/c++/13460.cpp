@@ -26,7 +26,7 @@ void Explore(pair<int, int> start) {
     for (int i = 0; i < 4; i++) {
         int xTemp = start.first + dx[i];
         int yTemp = start.second + dy[i];
-        if (xTemp >= 1 && xTemp <= row && yTemp >= 1 && yTemp <= col && !visit[xTemp][yTemp]) {
+        if (xTemp >= 1 && xTemp <= row && yTemp >= 1 && yTemp <= col && !visit[xTemp][yTemp] && map[xTemp][yTemp] != '#' && map[xTemp][yTemp] == '.') {
             Explore({xTemp, yTemp});
         }
     }
