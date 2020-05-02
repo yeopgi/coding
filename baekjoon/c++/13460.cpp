@@ -1,5 +1,7 @@
+// 벽 만날때마다 카운트 1;
+// 동시에 굴러감
 #include <iostream>
-#include <vector>
+#include <vector> 
 #include <string>
 using namespace std;
 

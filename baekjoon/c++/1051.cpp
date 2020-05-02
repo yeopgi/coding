@@ -1,3 +1,5 @@
+// 꼭지점 최소 4개 이상
+
 #include <iostream>
 #include <string>
 #include <algorithm>
