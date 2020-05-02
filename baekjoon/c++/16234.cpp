@@ -26,6 +26,7 @@ void Explore(pair<int, int> src)
         int yTemp = src.second + dy[i];
         int diff = abs(A[src.first][src.second] - A[xTemp][yTemp]);
         if (xTemp >= 1 && xTemp <= N && yTemp >= 1 && yTemp <= N && diff >= L && diff <= R && !visit[xTemp][yTemp]) {
+            
             openCountry.push_back({xTemp, yTemp});
             openBorder++;
             unitedPeople += A[xTemp][yTemp];
@@ -62,13 +63,13 @@ int main(void)
 
                 openCountry.push_back({i, j});
 
-                unitedPeople += A[i][j];
+                unitedPeople = A[i][j];
                 Explore({i, j});
 
                 if (openBorder >= 2) {
                     isMove = true;
                     average = unitedPeople / openBorder;
-                    for (int i = 0; i <= openCountry.size(); i++) {
+                    for (int i = 0; i < openCountry.size(); i++) {
                         A[openCountry[i].first][openCountry[i].second] = average;
                     }
                 }
@@ -76,6 +77,14 @@ int main(void)
             }
         }
 
+        for (int i = 1; i <= N; i++) {
+            for (int j = 1; j <= N; j++) {
+                cout << A[i][j] << '\t';
+            }
+
+            cout << endl;
+        }
+        
         if (isMove) {
             answer++;
         } else {
