@@ -3,15 +3,17 @@
 using namespace std;
 int answer{100};
 
-void dfs(string begin, string target, vector<string> words, vector<bool> &useCheck, int cnt = 0) 
-{
+void dfs(string begin, string target, vector<string> words, vector<bool> &useCheck, int cnt = 0) {
     for (int i = 0; i < words.size(); i++) {
         int count{0};
-        for (int j = 0; j < words[j].length(); j++) {
-            if (!useCheck[i] && begin[j] != words[i][j])
-                count++;
+        if (!useCheck[i]) {
+            for (int j = 0; j < words[j].length(); j++) {
+                if (begin[j] != words[i][j]) {
+                    count++;
+                }
+            }
         }
-
+        
         if (count == 1) {
             if (target == words[i] && answer > cnt + 1) {
                 answer = cnt + 1;

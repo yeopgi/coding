@@ -26,7 +26,6 @@ void Explore(pair<int, int> src)
         int yTemp = src.second + dy[i];
         int diff = abs(A[src.first][src.second] - A[xTemp][yTemp]);
         if (xTemp >= 1 && xTemp <= N && yTemp >= 1 && yTemp <= N && diff >= L && diff <= R && !visit[xTemp][yTemp]) {
-            
             openCountry.push_back({xTemp, yTemp});
             openBorder++;
             unitedPeople += A[xTemp][yTemp];
@@ -73,7 +72,6 @@ int main(void)
                         A[openCountry[i].first][openCountry[i].second] = average;
                     }
                 }
-
             }
         }
 
