@@ -3,7 +3,8 @@
 #include <algorithm>
 using namespace std;
 
-vector<int> solution(string msg) {
+vector<int> solution(string msg)
+{
 	vector<string> index = { "0","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P",
 "Q","R","S","T","U","V","W","X","Y","Z" };
 	vector<int> answer;
@@ -17,11 +18,11 @@ vector<int> solution(string msg) {
 		while (flag) {
 			temp += msg[i];
 			iter = find(index.begin(), index.end(), temp);
-			if (iter != index.end()) {
+			
+            if (iter != index.end()) {
 				j = iter-index.begin();
 				i++;
-			}
-			else {
+			} else {
 				flag = false;
 				answer.push_back(j);
 				index.push_back(temp);
@@ -29,5 +30,6 @@ vector<int> solution(string msg) {
 			}
 		}
 	}
+    
 	return answer;
 }
