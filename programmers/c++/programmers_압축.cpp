@@ -17,8 +17,7 @@ vector<int> solution(string msg)
 		string temp="";
 		while (flag) {
 			temp += msg[i];
-			iter = find(index.begin(), index.end(), temp);
-			
+			iter = find(index.begin(), index.end(), temp);			
             if (iter != index.end()) {
 				j = iter-index.begin();
 				i++;

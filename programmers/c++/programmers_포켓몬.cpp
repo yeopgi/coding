@@ -12,7 +12,7 @@ int solution(vector<int> nums) {
     for (int i = 0; i < length; i++) {
         pq.push(nums[i]);
     }
-
+    
     int cnt = 0;
     while (!pq.empty()) {
         int target = pq.top();
