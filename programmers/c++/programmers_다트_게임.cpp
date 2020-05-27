@@ -7,11 +7,10 @@ using namespace std;
 vector<int> option(3, 0);
 int solution(string dartResult) {
     int answer = 0;
-    int maxValidLength = 3;
+    int maxValidLength = 3, startIdx = 0;
     for (int i = 0; i < 3; i++) {
         int offset = 0;
-        for (int j = 0; j < dartResult.size(); j += offset) {
-            string str = dartResult.substr(j, maxValidLength - 1);
+            string str = dartResult.substr(startIdx, maxValidLength - 1);
             if (isdigit(str[2])) {
                 offset += 2;
                 if (str[1] == 'S') {
@@ -24,10 +23,9 @@ int solution(string dartResult) {
 
             } else {
                 offset += 3;
-                v.push_back(atoi(str[2]));
+                option[i] = str[2] - '0';
             }
 
-        }
     }
 
     return answer;
