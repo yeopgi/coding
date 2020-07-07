@@ -30,8 +30,10 @@ public class Main {
             }
 
             System.out.println(d[N][M]);
-            
-            Arrays.fill(d, 0);
+           
+	    for (int[] row : d) {
+            	Arrays.fill(row, 0);
+	    } 
         }
     }
 }
