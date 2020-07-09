@@ -15,11 +15,11 @@ public class Main {
         for (int l = 0; l < T; l++) {
             int N = scan.nextInt(); // 듣도 못한 사람의 수
             int M = scan.nextInt(); // 보도 못한 사람의 수
+            scan.nextLine();
+
             for (int i = 1; i <= M; i++) {
                 d[1][i] = i;
             }
-
-            scan.nextLine();
 
             for (int i = 2; i <= N; i++) {
                 for (int j = i; j <= M; j++) {
@@ -30,7 +30,7 @@ public class Main {
             }
 
             System.out.println(d[N][M]);
-            
+
             Arrays.fill(d, 0);
         }
     }
