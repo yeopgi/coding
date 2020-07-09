@@ -12,7 +12,7 @@ public class Main {
         int m = scan.nextInt(); // 보도 못한 사람의 수
         scan.nextLine(); // 개행문자 제거
 
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             list.add(scan.nextLine());
         }
