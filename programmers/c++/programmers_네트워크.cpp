@@ -1,16 +1,11 @@
 #include <cstring>
 #include <vector>
-
+#include <iostream>
 using namespace std;
-
-int visit[200];
-int dx[4] = {1, -1, 0, 0};
-int dy[4] = {0, 0, 1, -1};
-int except = 0;
 
 void Dfs(int src, vector<vector<int>> &v)
 {
-    if (!visit[src]) {
+    if (visit[src]) {
         return;
     }
 
@@ -22,7 +17,8 @@ void Dfs(int src, vector<vector<int>> &v)
 
 int solution(int n, vector<vector<int>> computers) {
     int answer = 0;
-    memset(visit, 0, sizeof(visit));
+    int except = 0;
+    vector<bool> visit(n, vector<bool>(n, false));
     vector<vector<int>> v(n);
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -40,15 +36,16 @@ int solution(int n, vector<vector<int>> computers) {
         if (visit[i]) {
             continue;
         }
-        
+
         visit[i] = true;
-        size_t j;
-        for (j = 0; j < v[i].size(); j++) {
+        for (size_t j = 0; j < v[i].size(); j++) {
             Dfs(v[i][j], v);
             answer++;
         }
+    }
 
-        if (j == 0) {
+    for (int i = 0; i < n; i++) {
+        if (v[i].size() == 0) {
             except++;
         }
     }
