@@ -27,10 +27,6 @@ void Dfs(int src, vector<vector<int>> &v)
 int solution(int n, vector<vector<int>> computers) {
     int answer = 0;
     int except = 0;
-<<<<<<< HEAD
-=======
-    vector<bool> visit(n, vector<bool>(n, false));
->>>>>>> 16eaaa65fb53dac381f1fc8a1e7dbe56dfeaae77
     vector<vector<int>> v(n);
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
