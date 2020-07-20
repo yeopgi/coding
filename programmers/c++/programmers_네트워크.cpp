@@ -1,19 +1,12 @@
 #include <cstring>
-#include <iostream>
 #include <vector>
-<<<<<<< HEAD
+#include <iostream>
 using namespace std;
 
 bool visit[200];
 
-void Dfs(int src, vector<vector<int>> &v) {
-=======
-#include <iostream>
-using namespace std;
-
 void Dfs(int src, vector<vector<int>> &v)
 {
->>>>>>> 16eaaa65fb53dac381f1fc8a1e7dbe56dfeaae77
     if (visit[src]) {
         return;
     }
@@ -44,9 +37,6 @@ int solution(int n, vector<vector<int>> computers) {
         if (visit[i]) {
             continue;
         }
-<<<<<<< HEAD
-
-=======
 
         visit[i] = true;
         for (size_t j = 0; j < v[i].size(); j++) {
@@ -56,14 +46,9 @@ int solution(int n, vector<vector<int>> computers) {
     }
 
     for (int i = 0; i < n; i++) {
->>>>>>> 16eaaa65fb53dac381f1fc8a1e7dbe56dfeaae77
         if (v[i].size() == 0) {
             except++;
-            continue;
         }
-
-        Dfs(i, v);
-        answer++;
     }
 
     answer += except;

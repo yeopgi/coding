@@ -1,30 +1,20 @@
-#include <cstdio>
-
+#include <iostream>
 using namespace std;
 
-int n, s, sum, cnt;
-int arr[20];
+int list[21];
 
-void dfs(int i, int sum) {
-    if (i == n)
-        return;
-    if (sum + arr[i] == s)
-        cnt++;
+int main(void)
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    dfs(i + 1, sum);
-    dfs(i + 1, sum + arr[i]);
-}
+    int N, S;
+    cin >> N >> S;
+    for (int i = 1; i <= N; i++) {
+        cin >> list[i];
+    }
 
-int main() {
+    
 
-    scanf("%d %d", &n, &s);
-    for (int i = 0; i < n; i++)
-        scanf("%d", &arr[i]);
-
-    cnt = 0;
-    dfs(0, 0);
-
-    printf("%d\n", cnt);
-
-    return 0;
+        return 0;
 }
