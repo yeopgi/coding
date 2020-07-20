@@ -1,11 +1,19 @@
 #include <cstring>
 #include <iostream>
 #include <vector>
+<<<<<<< HEAD
 using namespace std;
 
 bool visit[200];
 
 void Dfs(int src, vector<vector<int>> &v) {
+=======
+#include <iostream>
+using namespace std;
+
+void Dfs(int src, vector<vector<int>> &v)
+{
+>>>>>>> 16eaaa65fb53dac381f1fc8a1e7dbe56dfeaae77
     if (visit[src]) {
         return;
     }
@@ -19,6 +27,10 @@ void Dfs(int src, vector<vector<int>> &v) {
 int solution(int n, vector<vector<int>> computers) {
     int answer = 0;
     int except = 0;
+<<<<<<< HEAD
+=======
+    vector<bool> visit(n, vector<bool>(n, false));
+>>>>>>> 16eaaa65fb53dac381f1fc8a1e7dbe56dfeaae77
     vector<vector<int>> v(n);
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -36,7 +48,19 @@ int solution(int n, vector<vector<int>> computers) {
         if (visit[i]) {
             continue;
         }
+<<<<<<< HEAD
 
+=======
+
+        visit[i] = true;
+        for (size_t j = 0; j < v[i].size(); j++) {
+            Dfs(v[i][j], v);
+            answer++;
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+>>>>>>> 16eaaa65fb53dac381f1fc8a1e7dbe56dfeaae77
         if (v[i].size() == 0) {
             except++;
             continue;
