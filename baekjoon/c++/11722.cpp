@@ -8,7 +8,7 @@ int main(void)
 {
     ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
-
+	
 	int N;
 	cin >> N;
 	for (int i = 1; i <= N; i++) {

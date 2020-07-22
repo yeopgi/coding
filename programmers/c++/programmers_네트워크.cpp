@@ -3,6 +3,8 @@
 #include <iostream>
 using namespace std;
 
+bool visit[200];
+
 void Dfs(int src, vector<vector<int>> &v)
 {
     if (visit[src]) {
@@ -18,7 +20,6 @@ void Dfs(int src, vector<vector<int>> &v)
 int solution(int n, vector<vector<int>> computers) {
     int answer = 0;
     int except = 0;
-    vector<bool> visit(n, vector<bool>(n, false));
     vector<vector<int>> v(n);
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
