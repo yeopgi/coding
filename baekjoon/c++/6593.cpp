@@ -35,7 +35,7 @@ int Bfs(int a, int b, int c) {
                 if (map[nz][nx][ny] == '#') {
                     continue;
                 }
-
+        
                 if (map[nz][nx][ny] == '.' || map[nz][nx][ny] == 'E') {
                     if (!visit[nz][nx][ny]) {
                         visit[nz][nx][ny] = true;
