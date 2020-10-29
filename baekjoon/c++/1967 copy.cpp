@@ -5,8 +5,9 @@ using namespace std;
 
 vector<pair<int, int>> v[10002];
 bool visit[10002];
+int ans = 0;
 int maxNum = 0;
-int furthest;
+int endPoint = 0;
 
 void Dfs(int current, int length)
 {
@@ -14,16 +15,13 @@ void Dfs(int current, int length)
         return;
     }
 
-    visit[current] = true;
     for (int i = 0; i < v[current].size(); i++) {
         if (!visit[v[current][i].first]) {
             int value = v[current][i].second + length;
             if (value > maxNum) {
                 maxNum = value;
-                furthest = v[current][i].first;
+                Dfs(v[current][i].first, value);
             }
-
-            Dfs(v[current][i].first, value);
         }
     }
 }
@@ -35,16 +33,17 @@ int main(void)
 
     int n;
     cin >> n;
-    for (int i = 0; i < n - 1; i++) {
+    for (int i = 0; i < n; i++) {
         int src, dest, length;
         cin >> src >> dest >> length;
         v[src].push_back({dest, length});
         v[dest].push_back({src, length});
     }
 
-    Dfs(1, 0);
-    memset(visit, false, sizeof(visit));
-    Dfs(furthest, 0);
+    for (int i = 1; i <= n; i++) {
+        Dfs(i, 0);
+        memset(visit, false, sizeof(visit));
+    }
 
     cout << maxNum << '\n';
 }
