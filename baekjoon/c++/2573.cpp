@@ -13,7 +13,7 @@ int row, col;
 int dx[4] = {-1, 1, 0, 0};
 int dy[4] = {0, 0, -1, 1};
 
-void Melting(pair<size_t, size_t> start) 
+void Melting(pair<size_t, size_t> start)
 {
     if (map[start.first][start.second] <= 0) {
         return;
@@ -48,7 +48,7 @@ void Explore(pair<size_t, size_t> start)
     }
 }
 
-int main(void) 
+int main(void)
 {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -64,6 +64,11 @@ int main(void)
         for (size_t i = 1; i <= row; i++) {
             for (size_t j = 1; j <= col; j++) {
                 Melting({i, j});
+            }
+        }
+
+        for (size_t i = 1; i <= row; i++) {
+            for (size_t j = 1; j <= col; j++) {
                 map[i][j] = map[i][j] - meltingMap[i][j];
                 if (map[i][j] > 0) {
                     ice.push_back({i, j});
@@ -71,8 +76,13 @@ int main(void)
             }
         }
 
+        if (ice.size() == 0) {
+            cout << 0 << '\n';
+            return 0;
+        }
+
         Explore(ice[0]);
-        
+
         for (size_t i = 0; i < ice.size(); i++) {
             if (!visit[ice[i].first][ice[i].second]) {
                 cout << k << '\n';
@@ -81,7 +91,7 @@ int main(void)
         }
 
         ice.clear();
-        
+
         memset(meltingMap, 0, sizeof(meltingMap));
         memset(visit, false, sizeof(visit));
     }
