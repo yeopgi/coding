@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-priority_queue<pair<int, pair<int, int>>> pq;
+priority_queue<pair<int, pair<int, int>>> pq;   // <갯수, 좌표<int, int>>
 string map[51];
 bool visit[51][51][51 * 51];
 int result[51][51];
@@ -16,7 +16,7 @@ int Bfs(int x, int y)
 {
     pq.push({0, {x, y}});
     while (!pq.empty()) {
-        if (pq.top().second.first == n && pq.top().second.second == n) {
+        if (pq.top().second.first == n -1 && pq.top().second.second == n - 1) {
             cout << "asdas" << endl;
             return -(pq.top().first);
         }
@@ -25,7 +25,10 @@ int Bfs(int x, int y)
             int temp = -(pq.top().first);
             x = pq.top().second.first + dx[i];
             y = pq.top().second.second + dy[i];
-            if (x >= 1 && x <= n && y >= 1 && y <= n) {
+            //cout << "in " << x << " " << y << ' ' << temp << endl;
+            //if (x == 8 && y == 8)
+            //    return 9;
+            if (x >= 0 && x <= n -1 && y >= 0 && y <= n - 1) {
                 if (map[x][y] == '0') {
                     temp++;
                 }
@@ -49,12 +52,12 @@ int main(void)
     cin.tie(nullptr);
 
     cin >> n;
-    for (int i = 1; i <= n; i++) {
+    for (int i = 0; i < n; i++) {
         cin >> map[i];
     }
 
     visit[0][0][0] = true;
     cout << "hello" << '\n';
-    cout << Bfs(1, 1) << '\n';
+    cout << Bfs(0, 0) << '\n';
     return 0;
 }
