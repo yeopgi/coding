@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstring>      // memset
 #include <queue>
 #include <string>
 using namespace std;
@@ -16,33 +15,31 @@ int Bfs(int x, int y)
 {
     pq.push({0, {x, y}});
     while (!pq.empty()) {
-        if (pq.top().second.first == n -1 && pq.top().second.second == n - 1) {
-            cout << "asdas" << endl;
-            return -(pq.top().first);
+        int temp = -(pq.top().first);
+        x = pq.top().second.first;
+        y = pq.top().second.second;
+        pq.pop();
+        if (x == n - 1 && y == n - 1) {
+            return temp;
         }
 
         for (int i = 0; i < 4; i++) {
-            int temp = -(pq.top().first);
-            x = pq.top().second.first + dx[i];
-            y = pq.top().second.second + dy[i];
-            //cout << "in " << x << " " << y << ' ' << temp << endl;
-            //if (x == 8 && y == 8)
-            //    return 9;
-            if (x >= 0 && x <= n -1 && y >= 0 && y <= n - 1) {
-                if (map[x][y] == '0') {
-                    temp++;
+            int cnt = temp;
+            int xTemp = x + dx[i];
+            int yTemp = y + dy[i];
+            if (xTemp >= 0 && xTemp <= n - 1 && yTemp >= 0 && yTemp <= n - 1) {
+                if (map[xTemp][yTemp] == '0') {
+                    cnt++;
                 }
 
-                if (visit[x][y][temp]) {
+                if (visit[xTemp][yTemp][cnt]) {
                     continue;
                 }
 
-                visit[x][y][temp] = true;
-                pq.push({-temp, {x, y}});
+                visit[xTemp][yTemp][cnt] = true;
+                pq.push({-cnt, {xTemp, yTemp}});
             }
         }
-
-        pq.pop();
     }
 }
 
@@ -57,7 +54,6 @@ int main(void)
     }
 
     visit[0][0][0] = true;
-    cout << "hello" << '\n';
     cout << Bfs(0, 0) << '\n';
     return 0;
 }
