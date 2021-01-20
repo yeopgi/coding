@@ -9,6 +9,13 @@ int dy[3] = {1, 0, 1};
 
 void Run(int x, int y)
 {
+<<<<<<< HEAD
+=======
+    if (x == N && y == M) {
+        return;
+    }
+
+>>>>>>> e97db28c17fde30f1a7fcaf129df288a151fbb0f
     for (int i = 0; i < 3; i++) {
         int xTemp = x + dx[i];
         int yTemp = y + dy[i];
@@ -19,6 +26,11 @@ void Run(int x, int y)
 
                 Run(xTemp, yTemp);
             }
+<<<<<<< HEAD
+=======
+
+            return;
+>>>>>>> e97db28c17fde30f1a7fcaf129df288a151fbb0f
         }
     }
 }
