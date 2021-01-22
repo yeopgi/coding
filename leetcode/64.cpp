@@ -1,34 +1,59 @@
-#include <cstring>
 #include <algorithm>
+#include <vector>
+using namespace std;
+
 class Solution {
 public:
     int minPathSum(vector<vector<int>>& grid) {
-        const int row = grid.size() + 1;
-        const int col = grid[0].size() + 1;
-        int map[row][col];
-        memset(map, 0, sizeof(map));
+        const int col = grid[0].size();
+        const int row = grid.size();
+        vector<int> v(col);
+        v[0] = grid[0][0];
+        for (int i = 1; i < col; i++) {
+            v[i] = grid[0][i] + v[i - 1];
+        }
 
-        for (int i = 0; i < row - 1; i++) {
-            for (int j = 0; j < col - 1; j++) {
-                map[i + 1][j + 1] = grid[i][j];
+        for (int i = 1; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (j == 0) {
+                    v[j] = v[j] + grid[i][j];
+                } else {
+                    v[j] = min(v[j] + grid[i][j], v[j - 1] + grid[i][j]);
+                }
             }
         }
 
-        for (int i = 2; i < col; i++) {
-            map[1][i] = map[1][i - 1] + map[1][i];
-        }
-
-        for (int i = 2; i < row; i++) {
-            map[i][1] = map[i - 1][1] + map[i][1];
-        }
-
-
-        for (int i = 2; i < row; i++) {
-            for (int j = 2; j < col; j++) {
-                map[i][j] = min(map[i - 1][j], map[i][j - 1]) + map[i][j];
-            }
-        }
-
-        return map[row - 1][col - 1];
+        return v[col - 1];
     }
 };
+
+/*
+#include <algorithm>
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int minPathSum(vector<vector<int>> &grid) {
+    const int col = grid[0].size();
+    const int row = grid.size();
+    int map[col] = {0};
+    map[0] = grid[0][0];
+    cout << col << '\n';
+
+    for (int i = 1; i < col; i++) {
+        map[i] = grid[0][i] + map[i - 1];
+    }
+
+    for (int i = 1; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            if (j == 0) {
+                map[j] = map[j] + grid[i][j];
+            } else {
+                map[j] = min(map[j] + grid[i][j], map[j - 1] + grid[i][j]);
+            }
+        }
+    }
+
+    return map[col - 1];
+}
+*/
