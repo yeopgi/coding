@@ -5,6 +5,7 @@ using namespace std;
 
 int V, E, start;
 const int INF = 987654321;
+vector<int> v2[5];
 vector<pair<int, int>> v[20001];
 priority_queue<pair<int, int>> pq;
 
@@ -26,7 +27,7 @@ vector<int> Run(int start)
             int costTemp = v[src][i].first + cost; // v[src]까지의 최단거리
             if (dist[dst] > costTemp) {
                 dist[dst] = costTemp;
-                pq.push({dst, -dist[dst]});
+                pq.push({-dist[dst], dst});
             }
         }
     }
@@ -44,7 +45,7 @@ int main(void)
     for (int i = 1; i <= E; i++) {
         int src, dst, weight;
         cin >> src >> dst >> weight;
-        v[src].push_back({dst, weight});
+        v[src].push_back({weight, dst});
     }
 
     vector<int> ans = Run(start);
