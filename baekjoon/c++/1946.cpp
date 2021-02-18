@@ -31,7 +31,7 @@ int main(void) {
             }
         }
 
-        cout << '\n' << res << '\n';
+        cout << res << '\n';
     }
 
     return 0;
