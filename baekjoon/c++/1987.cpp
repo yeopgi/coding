@@ -1,41 +1,33 @@
 #include <iostream>
 #include <cstring>
 #include <string>
-#include <unordered_map>
+#include <algorithm>
 using namespace std;
 
 int R, C;
 const int MAX = 20;
-int a[MAX + 1][MAX + 1];
+int a[MAX][MAX];
 int dx[4] = {1, -1, 0, 0};
 int dy[4] = {0, 0, -1, 1};
-bool visit[MAX + 1][MAX + 1];
-string str[MAX + 1];
-unordered_map<char, int> um1, um2;
-int answer;
+int alpha[26];
+string str[MAX];
+int ans = 0;
 
-int Run(int srcX, int srcY)
+void Run(int srcX, int srcY, int currentCnt)
 {
-    if (visit[srcX][srcY]) {
-        return 0;
-    }
-
-    visit[srcX][srcY] = true;
-    int cnt = 1;
+    ans = max(ans, currentCnt);
     for (int i = 0; i < 4; i++) {
         int nx = srcX + dx[i];
         int ny = srcY + dy[i];
-        if (nx >= 1 && nx <= R && ny >= 1 && ny <= C) {
-            if (!visit[nx][ny]) {
-                if (um1[a[nx][ny]] == um2[a[nx][ny]]) {
-                    um1[a[nx][ny]]--;
-                    cnt += Run(nx, ny);
-                }
+        if (nx >= 0 && nx < R && ny >= 0 && ny < C) {
+            int temp = a[nx][ny] - 65;
+            if (alpha[temp] == 0) {
+                alpha[temp]++;
+                Run(nx, ny, currentCnt + 1);
+                alpha[temp]--;
             }
         }
     }
-
-    return cnt;
 }
 
 
@@ -44,18 +36,16 @@ int main(void)
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    answer = 0;
     cin >> R >> C;
-    for (int i = 1; i <= R; i++) {
+    for (int i = 0; i < R; i++) {
         cin >> str[i];
-        for (int j = 1; j <= C; j++) {
+        for (int j = 0; j < C; j++) {
             a[i][j] = str[i][j];
-            um1[a[i][j]]++;
         }
     }
 
-    um2 = um1;
-    answer = Run(1, 1);
-    cout << answer + 1 << '\n';
+    alpha[a[0][0] - 65]++;
+    Run(0, 0, 1);
+    cout << ans << '\n';
     return 0;
 }
