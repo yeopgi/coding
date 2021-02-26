@@ -24,6 +24,7 @@ void Check(pair<int, int> start, char color)
     }
 }
 
+
 int loop(int colorRange, int isBlind) 
 {
     for (int i = 0; i < colorRange; i++) {
