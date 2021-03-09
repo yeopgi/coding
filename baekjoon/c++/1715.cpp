@@ -40,6 +40,7 @@ int main(void)
     cin >> N;
     if (N == 1) {
         cout << 0 << '\n';
+        return;
     }
 
     for (int i = 1; i <= N; i++) {
