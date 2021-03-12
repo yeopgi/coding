@@ -15,7 +15,6 @@ typedef struct
 } Dir;
 
 Dir dir[4] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
-Dir currentDir;
 bool apple[MAX][MAX];
 bool leaves[MAX][MAX];
 deque<pair<int, char>> direct; // <time, direction>
@@ -33,7 +32,6 @@ int Run(int startX, int startY)
         currentX = currentX + dir[idx].x;
         currentY = currentY + dir[idx].y;
         if (leaves[currentX][currentY] || !(currentX >= 0 && currentX < N && currentY >= 0 && currentY < N)) { // 2. 자기자신과 부딪혀 종료
-            cout << "dasd" << '\n';
             return today;
         }
 
@@ -57,7 +55,6 @@ int Run(int startX, int startY)
         } 
     }
 
-    cout << "return " << '\n';
     return today;
 }
 
