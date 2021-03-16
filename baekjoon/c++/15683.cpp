@@ -44,7 +44,6 @@ void CopyMapInit()
     }
 }
 
-
 void Run(int cnt)
 {
     if (cnt == cam.size()) {
