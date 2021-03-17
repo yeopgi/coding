@@ -12,21 +12,17 @@ bool check[50001];
 int parent[50001];
 int depth[50001];
 
-int LCA(int u, int v)
+int LCA(int u, int v, int root)
 {
-	// v가 u보다 더 깊은 노드로 세팅
-	if (depth[u] > depth[v]) swap(u, v);
-	
-	// 두 노드의 깊이가 같아질때까지 v노드는 위로 거슬러 올라감
-	while (depth[u] != depth[v]) v = parent[v];
-	
-	// 두 노드가 같아질때 까지 위로 거슬러 올라감
-	while (u != v)
-	{
-		u = parent[u];
-		v = parent[v];
+	if (root == u || root == v) {
+		return root;
 	}
-	return u; // LCA 리턴
+
+	for (int i = 0; i < node[root].size(); i++) {
+        LCA(u, v, root);
+    }
+
+    return u; // LCA 리턴
 }
 
 
@@ -69,7 +65,7 @@ int main()
 	for (int i = 0; i < M; i++)
 	{
 		cin >> u >> v;
-		cout << LCA(u, v) << '\n';
+		//cout << LCA(u, v) << '\n';
 	}
 
 }
