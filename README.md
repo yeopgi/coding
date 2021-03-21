@@ -1,5 +1,5 @@
 # coding
-Repository to pratice coding test
+Repository to practice coding test
 
 # using web site
 (1) https://www.acmicpc.net/
