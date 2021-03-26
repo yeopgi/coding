@@ -30,7 +30,6 @@ void Run(Dir _currentLocation, int _currentDir)
     int tempDir = (_currentDir + 3) % 4;                //  한 번 왼쪽으로 방향 틀어본다.
     int x = _currentLocation.x + dir[tempDir].x,
         y = _currentLocation.y + dir[tempDir].y;
-    //cout << _currentLocation.x << ' ' << _currentLocation.y << '\n';
     if (a[x][y] == 0) {                         // 왼쪽으로 튼 방향에 청소하지않은 공간이 있다면
         Run(Dir(x, y) , tempDir);               // 그 방향으로 회전한 다음 한 칸 전진
     } else {                                    // 왼쪽으로 튼 방향에 청소할 공간이 없다면
@@ -46,9 +45,9 @@ void Run(Dir _currentLocation, int _currentDir)
         if (cnt == 4) {                     // 네 방향 모두 청소가 되어있거나, 벽인 경우
             int _x = _currentLocation.x - dir[_currentDir].x;
             int _y = _currentLocation.y - dir[_currentDir].y;
-            Run(Dir(_x, _y), _currentDir);
+            Run(Dir(_x, _y), _currentDir);  // 후진한다.
         } else {
-            _currentDir = tempDir;
+            _currentDir = tempDir;          
             Run(_currentLocation, _currentDir);
         }
     }
@@ -77,10 +76,7 @@ int main(void)
             if (a[i][j] == -1) {
                 ans++;
             }
-            //cout << a[i][j] << ' ';
         }
-
-        //cout << '\n';
     }
 
     cout << ans << '\n';
