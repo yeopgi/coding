@@ -1,7 +1,7 @@
-#include <iostream>
-#include <cstring>
-#include <string>
 #include <algorithm>
+#include <cstring>
+#include <iostream>
+#include <string>
 using namespace std;
 
 int R, C;
@@ -29,7 +29,6 @@ void Run(int srcX, int srcY, int currentCnt)
         }
     }
 }
-
 
 int main(void)
 {
