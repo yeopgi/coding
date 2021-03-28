@@ -9,15 +9,10 @@ vector<long long> rope;
 long long maxWeight(void)
 {
     long long result = 0;
-
     //각각의 로프는 한 개씩만 존재하므로 그리디하게 접근
     for (int i = 0; i < N; i++) {
         long long weight = rope[i];
-        //rope[i]를 병렬로 (N-i+1)개 겹쳤을 때 최대 중량
-        for (int j = i + 1; j < N; j++) {
-            weight += rope[i];
-        }
-
+        weight = weight * (N - i);
         result = max(result, weight);
     }
 
