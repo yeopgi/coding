@@ -4,6 +4,7 @@
 
 using namespace std;
 
+
 int solution(string s) {
     int sequenceCnt = 0;
     int sumList[s.size()/2 + 1] = {0};
