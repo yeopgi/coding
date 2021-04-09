@@ -1,32 +1,33 @@
-#include <iostream>
+#include<iostream>
+#include<algorithm>
 using namespace std;
 
-int N;
-long long _distance[100001];
+#define MAX 1000000000 // 10억
+
+long long dist[100001];
 long long price[100001];
-int total = 0;
+long long N, sum;
+long long greedy;
 
-void Run(int _total, int start)
-{
-    for (int i = 1; i <= N; i++) {
-        Run(_total, i);
-    }
-}
-
-int main(void)
+int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
+    
+	cin >> N;
+	for (int i = 1; i <= N - 1; i++)
+		cin >> dist[i];
+	
+	for (int i = 1; i <= N; i++)
+		cin >> price[i];
+	
+	greedy = MAX;
+	for (int i = 1; i <= N - 1; i++) {
+		if (price[i] < greedy)
+			greedy = price[i];
 
-    cin >> N;
-    for (int i = 1; i <= N - 1; i++) {
-        cin >> _distance[i];
-        total += _distance[i];
-    }
+		sum += greedy * dist[i];
+	}
 
-    for (int i = 1; i <= N; i++)
-        cin >> price[i];
-
-
-
+	cout << sum;
 }
