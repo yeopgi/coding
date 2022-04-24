@@ -1,3 +1,5 @@
+# 아직 다 풀지 못함
+
 from dataclasses import dataclass
 N = int(input())
 
