@@ -7,8 +7,8 @@ int main(void)
     cin.tie(nullptr);
 
     int dp[41][2] = {0};
-    dp[0][0] = 1;
-    dp[0][1] = 0;
+    dp[0][0]      = 1;
+    dp[0][1]      = 0;
     int caseCnt;
     cin >> caseCnt;
     while (caseCnt--) {
