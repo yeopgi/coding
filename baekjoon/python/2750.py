@@ -7,4 +7,5 @@ for i in range(0, N):
 
 arr.sort()
 for i in range(N):
+
     print(arr[i])
