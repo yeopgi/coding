@@ -9,6 +9,16 @@ vector<int> my_vector;
 bool        visited[10000 + 1];
 int         ans[10000 + 1];
 
+bool is_right() {
+    for (int i = 0; i < M - 1; i++) {
+        if (ans[i] > ans[i + 1]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 void Run(const int start_idx, const int depth) {
     if (visited[start_idx]) {
         return;
@@ -17,11 +27,14 @@ void Run(const int start_idx, const int depth) {
     visited[start_idx] = true;
     ans[depth]         = my_vector[start_idx];
     if (depth == M - 1) {
-        for (int i = 0; i < M; i++) {
-            cout << ans[i] << ' ';
+        if (is_right()) {
+            for (int i = 0; i < M; i++) {
+                cout << ans[i] << ' ';
+            }
+
+            cout << '\n';
         }
 
-        cout << '\n';
         visited[start_idx] = false;
         return;
     }
@@ -29,6 +42,7 @@ void Run(const int start_idx, const int depth) {
     for (int i = 1; i < my_vector.size(); i++) {
         Run(i, depth + 1);
     }
+
     visited[start_idx] = false;
 }
 
