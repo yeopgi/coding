@@ -1,0 +1,6 @@
+{
+    "editor.fontSize": 14,
+    "editor.fontFamily": "D2Coding, 'Courier New', monospace",
+    "C_Cpp.clang_format_path": "C:\\Program Files\\LLVM\\bin\\clang-format.exe",
+    "C_Cpp.clang_format_fallbackStyle": "file"
+}
