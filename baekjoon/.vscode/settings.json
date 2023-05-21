@@ -4,5 +4,9 @@
         "vector": "cpp",
         "iostream": "cpp"
     },
-    "editor.fontSize": 15
+    "editor.fontSize": 15,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python"
+    },
+    "python.formatting.provider": "none"
 }
