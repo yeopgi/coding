@@ -4,9 +4,10 @@
         "vector": "cpp",
         "iostream": "cpp"
     },
-    "editor.fontSize": 15,
+    "editor.fontSize": 13,
     "[python]": {
         "editor.defaultFormatter": "ms-python.python"
     },
-    "python.formatting.provider": "none"
+    "python.formatting.provider": "none",
+    "editor.fontFamily": "D2Coding, 'Courier New', monospace"
 }
