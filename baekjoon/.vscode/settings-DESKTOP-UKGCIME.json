@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "*.tcc": "cpp",
+        "vector": "cpp",
+        "iostream": "cpp",
+        "xiosbase": "cpp"
+    },
+    "editor.fontSize": 13,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python"
+    },
+    "python.formatting.provider": "none",
+    "editor.fontFamily": "D2Coding, 'Courier New', monospace"
+}
