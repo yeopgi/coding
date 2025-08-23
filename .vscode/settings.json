@@ -1,6 +1,9 @@
 {
     "editor.fontSize": 14,
-    "editor.fontFamily": "D2Coding, 'Courier New', monospace",
+    "editor.fontFamily": "d2coding, 'Courier New', monospace",
     "C_Cpp.clang_format_path": "C:\\Program Files\\LLVM\\bin\\clang-format.exe",
-    "C_Cpp.clang_format_fallbackStyle": "file"
+    "C_Cpp.clang_format_fallbackStyle": "Visual Studio",
+    "files.associations": {
+        "utility": "cpp"
+    }
 }

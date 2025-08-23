@@ -2,12 +2,14 @@
     "files.associations": {
         "*.tcc": "cpp",
         "vector": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "utility": "cpp"
     },
     "editor.fontSize": 13,
     "[python]": {
         "editor.defaultFormatter": "ms-python.autopep8"
     },
     "python.formatting.provider": "none",
-    "editor.fontFamily": "D2Coding, 'Courier New', monospace"
+    "editor.fontFamily": "D2Coding, 'Courier New', monospace",
+    "C_Cpp.clang_format_style": "Visual Studio"
 }
