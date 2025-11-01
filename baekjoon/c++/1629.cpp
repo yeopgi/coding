@@ -10,7 +10,7 @@ ll Run(const ll a, const ll b, const ll c) {
 
     ll temp = Run(a, b / 2, c);
     ll val = temp * temp % c;
-    if ((b % 2) != 0) {
+    if ((b % 2) != 0)    {
         return val * (a % c) % c;
     } else {
         return val;
